@@ -57,6 +57,10 @@ export declare class BsDatepickerDirective implements OnInit, OnDestroy, OnChang
      */
     maxDate: Date;
     /**
+     * Minimmum display mode : day, month, or year
+     */
+    minMode: string;
+    /**
      * Emits when datepicker value has been changed
      */
     bsValueChange: EventEmitter<Date>;

@@ -10,6 +10,7 @@ export declare class BsDatepickerState implements DatepickerRenderOptions, Datep
     isDisabled?: boolean;
     minDate?: Date;
     maxDate?: Date;
+    minMode?: BsDatepickerViewMode;
     hoveredDate?: Date;
     hoveredMonth?: Date;
     hoveredYear?: Date;

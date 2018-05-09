@@ -39,12 +39,20 @@ export function bsDatepickerReducer(state, action) {
         case BsDatepickerActions.NAVIGATE_TO: {
             var payload = action.payload;
             var date = setFullDate(state.view.date, payload.unit);
-            var mode = payload.viewMode;
-            var newState = { view: { date: date, mode: mode } };
+            var newState = void 0;
+            var mode = void 0;
+            if (canSwitchMode(payload.viewMode, state.minMode)) {
+                mode = payload.viewMode;
+                newState = { view: { date: date, mode: mode } };
+            }
+            else {
+                mode = state.view.mode;
+                newState = { selectedDate: date, view: { date: date, mode: mode } };
+            }
             return Object.assign({}, state, newState);
         }
         case BsDatepickerActions.CHANGE_VIEWMODE: {
-            if (!canSwitchMode(action.payload)) {
+            if (!canSwitchMode(action.payload, state.minMode)) {
                 return state;
             }
             var date = state.view.date;
@@ -69,7 +77,7 @@ export function bsDatepickerReducer(state, action) {
         case BsDatepickerActions.SET_OPTIONS: {
             var newState = action.payload;
             // preserve view mode
-            var mode = state.view.mode;
+            var mode = newState.minMode ? newState.minMode : state.view.mode;
             var _viewDate = isDateValid(newState.value) && newState.value
                 || isArray(newState.value) && isDateValid(newState.value[0]) && newState.value[0]
                 || state.view.date;

@@ -147,7 +147,8 @@ var BsDatepickerDirective = (function () {
             value: this._bsValue,
             isDisabled: this.isDisabled,
             minDate: this.minDate || this.bsConfig && this.bsConfig.minDate,
-            maxDate: this.maxDate || this.bsConfig && this.bsConfig.maxDate
+            maxDate: this.maxDate || this.bsConfig && this.bsConfig.maxDate,
+            minMode: this.minMode || this.bsConfig && this.bsConfig.minMode
         });
     };
     BsDatepickerDirective.prototype.ngOnDestroy = function () {
@@ -180,6 +181,7 @@ var BsDatepickerDirective = (function () {
         'isDisabled': [{ type: Input },],
         'minDate': [{ type: Input },],
         'maxDate': [{ type: Input },],
+        'minMode': [{ type: Input },],
         'bsValueChange': [{ type: Output },],
     };
     return BsDatepickerDirective;

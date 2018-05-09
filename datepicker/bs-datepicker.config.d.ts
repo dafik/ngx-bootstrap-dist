@@ -1,4 +1,4 @@
-import { DatepickerRenderOptions } from './models/index';
+import { DatepickerRenderOptions, BsDatepickerViewMode } from './models/index';
 /**
  * For date range picker there are `BsDaterangepickerConfig` which inherits all properties,
  * except `displayMonths`, for range picker it default to `2`
@@ -14,6 +14,10 @@ export declare class BsDatepickerConfig implements DatepickerRenderOptions {
      * Default max date for all date/range pickers
      */
     maxDate?: Date;
+    /**
+     * Defaut mode for all date pickers
+     */
+    minMode?: BsDatepickerViewMode;
     /** CSS class which will be applied to datepicker container,
      * usually used to set color theme
      */
